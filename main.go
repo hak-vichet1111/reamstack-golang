@@ -35,7 +35,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUserHandler(w http.ResponseWriter, r *http.Request) {
-	rows, err := DB.Query("SELECT id, email FROM auth.users")
+	rows, err := DB.Query("SELECT * FROM public.profiles")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return 
@@ -57,3 +57,6 @@ func getUserHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "Users: %v", users)
 }
+
+
+// Run project: compiledaemon --command="./reamstack-golang"
